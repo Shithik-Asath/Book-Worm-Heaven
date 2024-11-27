@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interviews</title>
+    <link rel="icon" href="./assets/logobwh.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, hsl(0, 0%, 90%), hsl(0, 0%, 100%));
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            transition: 2s;
+        }
+
+        nav a img {
+            width: 100px;
+            height: 100%;
+        }
+
+        nav {
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgb(0, 0, 0);
+            padding: 10px 20px;
+            color: grey;
+            z-index: 2;
+        }
+
+        nav div ul {
+            display: flex;
+            text-decoration: none;
+            gap: 20px;
+        }
+
+        nav div ul a:hover {
+            color: #fff;
+        }
+        .bold b{
+            color: black;
+        }
+
+        #index {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 96%;
+
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .reviews-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-item {
+
+            display: flex;
+            gap: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-item:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-avatar {
+            flex-shrink: 0;
+        }
+
+        .review-avatar img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .review-content {
+            flex-grow: 1;
+        }
+
+        .review-content h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .review-content p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .review-date {
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .star-rating {
+            color: #FFD700;
+        }
+
+        .toggle-button {
+            background-color: hsl(0, 0%, 1%);
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-button:hover {
+            background-color: hsl(0, 0%, 25%);
+        }
+
+        .review-text {
+            display: none;
+            /* Initially hide review content */
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #1d1d1d;
+            color: white;
+        }
+
+        #footer-img {
+            width: 100px;
+            height: 39px;
+        }
+
+        footer p {
+            font-size: 15px;
+        }
+
+        footer .foo-div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer .foo-div a {
+            color: grey;
+        }
+
+        footer .foo-div a:hover {
+            color: #fff;
+        }
+
+        i {
+            width: 14px;
+            height: 16px;
+        }
+
+        @media (max-width: 768px) {
+
+            .review-item {
+                flex-direction: column;
+                gap: 20px;
+                padding: 10px;
+                /* Adjust padding for smaller screens */
+            }
+
+            .review-avatar img {
+                width: 80px;
+                height: 80px;
+            }
+
+            nav {
+                flex-direction: column;
+                /* Change navigation items to stack vertically */
+            }
+
+            footer .foo-div {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            footer p {
+                font-size: 13px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">
+            <img src="./assets/logobwh.png" alt="">
+        </a>
+        <div>
+            <ul>
+                <a href="index.html">Home</a>
+                <a href="literary.html">Books</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="interview.html" id="index">Interviews</a>
+                <a href="virtual.html">Book Club</a>
+                <a href="contact.html">Contact Us</a>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h2 class="section-title" style="text-transform: uppercase;">Author Interviews</h2>
+        <div class="reviews-container">
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/Arundhati_Roy.jpg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Arundhati Roy</h3>
+                    <p>The Indian Novelist</p>
+                    <p class="review-text">
+
+                        <b class="bold"> Interview Excerpt:</b> Roy discussed her literary motivations and approach. She
+                        emphasized that literature should
+                        engage with the
+                        world's complexities, injustices, and contradictions, and her writing is a way to challenge the
+                        status quo. When asked
+                        about "The God of Small Things," she explained that it was rooted in her experiences in Kerala
+                        and aimed to capture
+                        human relationships against a backdrop of caste, politics, and tradition, intertwining intimate
+                        moments with larger
+                        socio-political contexts. On her critiques of capitalism and globalization, Roy highlighted that
+                        these forces have led
+                        to unprecedented levels of partriotism.
+
+
+
+                    </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/chetanbhagat.jpg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Chetan Bhagat</h3>
+                    <p>The Indian Author</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b> Chetan Bhagat spoke about his motivations and approach to
+                        writing. He emphasized the importance of making literature
+                        accessible and engaging for a wide audience, aiming to reflect contemporary societal issues and
+                        aspirations. Bhagat
+                        discussed how his novels often draw from real-life experiences and observations, capturing the
+                        essence of modern India's
+                        middle class. He also addressed his critiques of the education system and societal pressures,
+                        highlighting his desire to
+                        inspire change and provoke thought through his work.
+
+
+
+
+
+
+                    </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/RuskinBond.jpg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Ruskin Bond</h3>
+                    <p>The Indian Author</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b> Ruskin Bond shared insights into his writing journey and inspirations. He spoke about his deep connection with nature
+                        and the Indian countryside, which profoundly influences his storytelling. Bond emphasized the importance of simplicity
+                        and authenticity in his work, aiming to evoke a sense of nostalgia and timelessness. He discussed how his characters
+                        often reflect real people and experiences from his life, adding a personal touch to his narratives. Bond also
+                        highlighted his love for engaging young readers, hoping to instill in them a love for books and the natural world.
+                    </p>
+
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/RK.webp" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>R. K. Narayan</h3>
+                    <p>The Indian Novelist</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>R.K. Narayan, the esteemed Indian author, provided insights into his literary philosophy and creative process. He
+                        discussed his deep connection to the cultural fabric of India, drawing inspiration from the everyday lives of its people
+                        to craft vivid and relatable stories. Narayan emphasized the importance of simplicity and authenticity in his writing,
+                        capturing the nuances of human relationships and societal dynamics with wit and charm. He reflected on the universal
+                        themes explored in his works, from the comedic absurdities of life to the poignant struggles of ordinary individuals
+                        striving for dignity and fulfillment. Narayan's enduring legacy as one of India's foremost storytellers continues to
+                        resonate with readers around the world, showcasing the timeless appeal of his distinctive narrative voice.
+
+
+
+
+
+
+
+
+                    
+</p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/jk rowling.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>J. K. Rowling</h3>
+                    <p>The British Author</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>J.K. Rowling, the celebrated author of the Harry Potter series, shared insights into her literary journey and the
+                        magical world she created. She discussed her inspiration for the series, drawing from a combination of personal
+                        experiences, folklore, and mythology to craft a richly detailed universe filled with wonder and adventure. Rowling
+                        emphasized the importance of character development, highlighting the complexities and growth of her beloved protagonists
+                        as they navigate the challenges of adolescence and the battle between good and evil. She also addressed the universal
+                        themes woven throughout her stories, including the power of love, friendship, and the triumph of hope over adversity.
+                        Rowling's imaginative storytelling and vivid imagination have captivated millions of readers worldwide, inspiring a
+                        generation of fans to believe in the magic of possibility.
+
+                        
+                                            </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/stephen king.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Stephen King</h3>
+                    <p>The American Author</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>Stephen King, the master of horror fiction, provided insights into his prolific writing career and enduring influence.
+                        He discussed his creative process, which often begins with a simple premise or character concept that evolves
+                        organically as he writes. King emphasized the importance of immersion in the fictional world he creates, allowing
+                        characters to drive the narrative forward through their choices and actions. He reflected on the diverse range of themes
+                        explored in his works, from supernatural terror to psychological suspense, drawing inspiration from both personal
+                        experiences and societal anxieties. King also spoke about his commitment to storytelling as a means of catharsis and
+                        connection, engaging readers on an emotional level while challenging them to confront their deepest fears. His
+                        unparalleled ability to blend horror with humanity has solidified his place as one of the most influential and beloved
+                        authors of our time.
+</p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/agatha christie.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Agatha Christie</h3>
+                    <p>The English Writer</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>Agatha Christie, the beloved British crime novelist, offered insights into her unparalleled career and enduring
+                        popularity. She discussed her fascination with human psychology and the art of deception, which form the cornerstone of
+                        her iconic mystery novels. Christie emphasized the importance of meticulous plotting and clever misdirection in crafting
+                        her intricate whodunits, often surprising readers with unexpected twists and turns. She reflected on her diverse cast of
+                        characters, from the brilliant detective Hercule Poirot to the indomitable Miss Marple, each embodying unique quirks and
+                        insights into the human condition. Christie also spoke about her enduring legacy as the "Queen of Crime," whose timeless
+                        stories continue to captivate audiences around the world, cementing her status as one of the most prolific and
+                        influential authors in literary history.
+                        </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/george.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>George R. R. Martin</h3>
+                    <p>The American Novelist</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b> George R.R. Martin, the renowned American author, provided insights into his epic fantasy series, "A Song of Ice and
+                        Fire." He discussed his approach to world-building, crafting intricate political landscapes and morally complex
+                        characters that defy traditional archetypes. Martin emphasized the importance of historical realism and human psychology
+                        in shaping his narratives, drawing inspiration from real-world events such as the Wars of the Roses. He reflected on the
+                        unpredictable nature of storytelling, allowing characters to evolve organically and subvert reader expectations. Martin
+                        also addressed the challenges of balancing multiple storylines and maintaining narrative momentum across his expansive
+                        saga, which has captivated readers and viewers worldwide through its rich tapestry of intrigue, betrayal, and
+                        redemption.
+</p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/toni.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Toni Morrison</h3>
+                    <p>The American Novelist</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>Toni Morrison, the iconic American author, offered profound insights into her literary vision and thematic explorations.
+                        She discussed the significance of storytelling as a means of reclaiming marginalized voices and histories, particularly
+                        within the African American experience. Morrison delved into the complexities of race, identity, and memory in her
+                        works, confronting the legacies of slavery and oppression while celebrating the resilience of the human spirit. She
+                        spoke passionately about the power of language and narrative structure in conveying the nuances of lived experience,
+                        often employing lyrical prose to evoke emotional resonance. Morrison also reflected on her role as a cultural critic and
+                        advocate for social justice, using her platform to challenge dominant narratives and inspire empathy and understanding.
+
+
+
+
+
+
+
+                       </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/neil gaiman.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Neil Gaiman</h3>
+                    <p>The English Author</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>Neil Gaiman, the acclaimed British author, shared insights into his imaginative storytelling and creative process. He
+                        discussed the eclectic range of influences that shape his work, from mythology and folklore to contemporary literature
+                        and film. Gaiman emphasized the importance of curiosity and exploration in crafting his fantastical narratives, often
+                        blending elements of the supernatural with poignant human themes. He reflected on the transformative power of
+                        storytelling, highlighting its ability to transport readers to other worlds while offering profound insights into our
+                        own. Gaiman also spoke about his engagement with diverse mediums, including novels, graphic novels, and screenwriting,
+                        showcasing his versatility as a storyteller across different platforms.
+
+
+
+
+
+
+
+                        </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/haruki murakami.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Haruki Murakami</h3>
+                    <p>The Japanese Writer</p>
+                    <p class="review-text">
+                        <b class="bold">Interview Excerpt:</b>Haruki Murakami, the celebrated Japanese author, offered insights into his distinctive writing style and thematic
+                        explorations. He discussed his fascination with blending elements of reality and fantasy, creating surreal narratives
+                        that blur the lines between the ordinary and the extraordinary. Murakami reflected on the significance of solitude and
+                        introspection in his characters' journeys, often exploring themes of alienation and existential quest. He spoke about
+                        his literary influences, drawing inspiration from Western literature, music, and pop culture
+                        </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-avatar">
+                    <img src="./assets/albert camus.jpeg" alt="User Avatar">
+                </div>
+                <div class="review-content">
+                    <h3>Albert Camus</h3>
+                    <p>The French Author</p>
+                    <p class="review-text">
+                      <b class="bold">Interview Excerpt:</b>  Albert Camus, the influential French philosopher and author, discussed his existentialist views
+                        and literary endeavors. He delved into the themes of absurdity and the human condition, which
+                        permeate his works, reflecting on the inherent contradictions and complexities of existence.
+                        Camus emphasized the role of literature in confronting life's absurdities and providing meaning
+                        in the face of uncertainty. He spoke passionately about his commitment to social justice and
+                        resistance against oppression, drawing from his own experiences and observations. Camus also
+                        reflected on the enduring relevance of his writings, which continue to provoke introspection and
+                        inspire readers worldwide, encapsulating the enduring legacy of existential thought.
+
+
+
+
+
+
+
+
+                    </p>
+                    <button class="toggle-button" onclick="toggleReviewContent(this)">Interview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+        <div class="foo-div">
+            <a href="index.html">
+                <img id="footer-img" src="./assets/logobwh.png" class="image" alt="">
+            </a>
+            <div class="foo-div">
+                <a href="terms.html">
+                    <p>Terms and Conditions </p>
+                </a><i>|</i>
+                <a href="privacy.html">
+                    <p>Privacy Policy </p>
+                </a><i>|</i>
+                <div class="footer-icon-container">
+                    <i class="fa-brands fa-instagram" style="color:white;"></i>
+                    <i class="fa-brands fa-twitter" style="color:white;"></i>
+                    <i class="fa-brands fa-facebook" style="color:white;"></i>
+                </div><i>|</i>
+                <p>&copy; 2024 bookwormhaven.com</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+
+
+</div>
+</div>
+
+<script>
+    function toggleReadMore(element) {
+        const reviewContent = element.parentNode;
+        const moreText = " Additional review content goes here, providing more insights and details about the book.";
+
+        if (element.textContent === "Read More") {
+            reviewContent.innerHTML += moreText;
+            element.textContent = "Read Less";
+        } else {
+            reviewContent.innerHTML = reviewContent.innerHTML.replace(moreText, '');
+            element.textContent = "Read More";
+        }
+    }
+    function toggleReviewContent(button) {
+        const reviewContent = button.previousElementSibling;
+        reviewContent.classList.toggle('review-text'); // Toggle the class to show/hide review content
+        if (button.textContent === 'Interview') {
+            button.textContent = 'Hide Content';
+        } else {
+            button.textContent = 'Interview';
+        }
+    }
+</script>
+</body>
+
+</html>
